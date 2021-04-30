@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view contentType="text/html; charset=utf-8">
+    <h:form>
+        <div>
+            <h:outputLabel value="Título"/>
+            <h:inputText value="#{adminLivrosBean.livro.titulo}"
+                required="true" id="titulo"/> <!-- requiredMessage="O título é um campo obrigatório!" -->
+            <h:message for="titulo"/>
+        </div>
+        <div>
+            <h:outputLabel value="Descrição"/>
+            <h:inputTextarea rows="4" cols="20" value="#{adminLivrosBean.livro.descricao}"
+                            required="true" id="descricao"/> <!--requiredMessage="A descrição é obrigatória!"-->
+            <h:message for="descricao"/>
+        </div>
+        <div>
+            <h:outputLabel value="Número de Páginas"/>
+            <h:inputText value="#{adminLivrosBean.livro.numeroPaginas}"
+                            required="true" id="numeroPaginas"> <!--requiredMessage="O número de páginas é obrigatório!"-->
+            </h:inputText>
+            <h:message for="numeroPaginas"/>
+        </div>
+        <div>
+            <h:outputLabel value="Preço"/>
+            <h:inputText value="#{adminLivrosBean.livro.preco}"
+                            required="true" id="preco"> <!--requiredMessage="O preço é obrigatório!"-->
+            </h:inputText>
+            <h:message for="preco"/>
+        </div>
+
+        <div>
+            <h:outputLabel value="Autores"/>
+            <h:selectManyListbox value="#{adminLivrosBean.livro.autores}"
+                                converter="autorConverter" id="autores">
+                <f:selectItems value="#{adminLivrosBean.autores}"
+                               var="autor"
+                                itemValue="#{autor}" itemLabel="#{autor.nome}"/>
+            </h:selectManyListbox>
+            <h:message for="autores"/>
+        </div>
+        <div>
+            <h:outputLabel value="Data de Publicação"/>
+            <h:inputText value="#{adminLivrosBean.livro.dataPublicacao}" id="dataPublicacao"/>
+            <h:message for="dataPublicacao"/>
+        </div>
+
+        <h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
+    </h:form>
+</f:view>
+</html>
