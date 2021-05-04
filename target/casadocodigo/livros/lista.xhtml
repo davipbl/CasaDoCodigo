@@ -6,31 +6,68 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <h:messages/>
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+        <h:outputStylesheet library="css" name="style-admin.css" />
+    </h:head>
 
-    <h:dataTable var="livro" value="#{adminListaLivrosBean.livros}">
-        <h:column>
-            <f:facet name="header">Título</f:facet>
-            ${livro.titulo}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Descrição</f:facet>
-            ${livro.descricao}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Páginas</f:facet>
-            ${livro.numeroPaginas}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Preço</f:facet>
-            ${livro.preco}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Autores</f:facet>
-            <ui:repeat value="#{livro.autores}" var="autor">
-                | ${autor.nome} |
-            </ui:repeat>
-        </h:column>
-    </h:dataTable>
+    <h:body>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Casa do Código</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Lista</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="form.xhtml">Cadastro</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <h1>Lista de Livros</h1>
+            <h:messages/>
 
+            <h:dataTable var="livro" value="#{adminListaLivrosBean.livros}"
+                         class="table table-bordered table-striped table-hover">
+                <h:column>
+                    <f:facet name="header">Título</f:facet>
+                    ${livro.titulo}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Descrição</f:facet>
+                    ${livro.descricao}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Páginas</f:facet>
+                    ${livro.numeroPaginas}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Preço</f:facet>
+                    ${livro.preco}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Autores</f:facet>
+                    <ui:repeat value="#{livro.autores}" var="autor">
+                        | ${autor.nome} |
+                    </ui:repeat>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Capa Path</f:facet>
+                    <img src="#{request.contextPath}/file/#{livro.capaPath}"
+                         height="300 px" alt="#{livro.titulo}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
+    </h:body>
 </html>
