@@ -2,7 +2,16 @@
   <dictionary name="Davi">
     <words>
       <w>capa</w>
+      <w>carrinho</w>
+      <w>compras</w>
+      <w>finalizar</w>
+      <w>itens</w>
       <w>livro</w>
+      <w>pagamento</w>
+      <w>pagar</w>
+      <w>preco</w>
+      <w>quantidade</w>
+      <w>titulo</w>
     </words>
   </dictionary>
 </component>

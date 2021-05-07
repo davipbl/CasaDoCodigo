@@ -6,15 +6,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-    <h:outputStylesheet library="css" name="bootstrap.min.css" />
-    <h:outputStylesheet library="css" name="style-admin.css" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <h:outputStylesheet library="css" name="style-admin.css"/>
 </h:head>
 
 <h:body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Casa do Código</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -23,7 +24,7 @@
                         <a class="nav-link" aria-current="page" href="lista.xhtml">Lista</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Cadastro</a>
+                        <a class="nav-link active" href="form.xhtml">Cadastro</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -57,7 +58,7 @@
             <div class="form-group">
                 <h:outputLabel value="Preço"/>
                 <h:inputText value="#{adminLivrosBean.livro.preco}"
-                             required="true" id="preco" styleClass="form-control" />
+                             required="true" id="preco" styleClass="form-control"/>
                 <h:message for="preco"/>
             </div>
             <div class="form-group">
