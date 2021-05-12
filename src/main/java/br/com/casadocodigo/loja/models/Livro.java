@@ -8,6 +8,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,6 +17,8 @@ import java.util.Objects;
 
 @Entity
 @Cacheable
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Livro {
 
     @Id
@@ -45,6 +48,8 @@ public class Livro {
     @ManyToMany
     @Size(min = 1)
     @NotNull
+    @XmlElement(name = "autor")
+    @XmlElementWrapper(name = "autores")
     private List<Autor> autores = new ArrayList<>();
 
     public String getTitulo() {

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:o="http://omnifaces.org/ui">
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -193,12 +192,14 @@
                         Mobile
                     </a>
                 </li>
+                <c:if test="#{currentUser.hasRole('ADMIN')}">
                 <li class="colecoesDaCDC-colecaoItem">
-                    <a href="https://www.casadocodigo.com.br/collections/livros-de-desenvolvimento-web"
+                    <a href="#{request.contextPath}/livros/lista.xhtml"
                        class="colecoesDaCDC-colecaoLink">
-                        Web
+                        Administração
                     </a>
                 </li>
+                </c:if>
 
             </nav>
             <form role="search" aria-labelledby="rotuloBuscaPrincipal" action="https://www.casadocodigo.com.br/search"
@@ -248,7 +249,7 @@
 
 <main>
 
-<o:cache scope="application">
+    <o:cache scope="application">
     <section class="vitrineDestaquinho container">
         <h2 class="vitrineDestaquinho-titulo">Últimos lançamentos</h2>
         <ul class="vitrineDestaquinho-lista">
@@ -288,7 +289,7 @@
             </ui:repeat>
         </ul>
     </section>
-</o:cache>
+    </o:cache>
 
     <div class="buscaDoRodape container" role="presentation">
         <form role="search" aria-labelledby="rotuloBuscaDoRodape" action="https://www.casadocodigo.com.br/search"
@@ -466,6 +467,16 @@
         </ul>
     </div>
 </footer>
+
+<script>
+    var canalDePromos = new WebSocket("ws://localhost:8080/#{request.contextPath}/canal/promos");
+    canalDePromos.onmessage = function(message) {
+        var novaPromo = JSON.parse(message.data);
+        if (confirm("Que tal aproveitar a promoção relampago " + novaPromo.titulo)) {
+            document.location.href="#{request.contextPath}/livro-detalhe.xhtml?id=" + novaPromo.livroId;
+        }
+    };
+</script>
 
 <script type="text/javascript" src="#{request.contextPath}/resources/js/trackExternalLinks.js"></script>
 

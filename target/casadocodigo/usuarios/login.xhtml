@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Casa do Código - Login</title>
+</head>
+
+<body>
+    <form action="${request.getContextPath()}/j_security_check" method="post">
+        <label>Login</label>
+        <input type="text" name="j_username"/>
+
+        <label>Login</label>
+        <input name="j_password" type="password"/>
+
+        <input type="submit">Login</input>
+    </form>
+</body>
+</html>
